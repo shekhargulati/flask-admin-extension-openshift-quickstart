@@ -14,5 +14,3 @@ except IOError:
 # 
 
 from auth import app as application
-from auth import *
-init()

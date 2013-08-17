@@ -14,7 +14,7 @@ app = Flask(__name__)
 app.config['SECRET_KEY'] = '123456790'
 
 # Create in-memory database
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///'+ os.environ['OPENSHIFT_DATA_DIR'] +'test.sqlite'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite://'+ os.environ['OPENSHIFT_DATA_DIR'] +'test.sqlite'
 app.config['SQLALCHEMY_ECHO'] = True
 db = SQLAlchemy(app)
 

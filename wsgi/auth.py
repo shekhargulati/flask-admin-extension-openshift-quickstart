@@ -138,5 +138,11 @@ def logout_view():
     login.logout_user()
     return redirect(url_for('index'))
 
+def init():
+    init_login()
+    admin = admin.Admin(app, 'Auth', index_view=MyAdminIndexView())
+    admin.add_view(MyModelView(User, db.session))
+    db.create_all()
+
 if __name__ == '__main__':
     app.run(debug = True)

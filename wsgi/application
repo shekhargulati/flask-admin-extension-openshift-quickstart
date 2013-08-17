@@ -15,4 +15,7 @@ except IOError:
 
 from auth import app as application
 from auth import *
+init_login()
+admin = admin.Admin(app, 'Auth', index_view=MyAdminIndexView())
+admin.add_view(MyModelView(User, db.session))
 db.create_all()

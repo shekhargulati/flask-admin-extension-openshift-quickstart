@@ -7,16 +7,17 @@ from flask_wtf import Form
 from wtforms import TextField ,PasswordField, validators
 from flask.ext.admin.contrib import sqlamodel
 
+
+DEBUG = True
+SECRET_KEY = 'development key'
+
 # Create Flask application
 app = Flask(__name__)
 
 app.config['PROPAGATE_EXCEPTIONS'] = True
 
-# Create dummy secrey key so we can use sessions
-app.config['SECRET_KEY'] = '123456790'
-
 # Create in-memory database
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///test.sqlite'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite://'os.environ['OPENSHIFT_DATA_DIR'] + 'test.sqlite'
 app.config['SQLALCHEMY_ECHO'] = True
 db = SQLAlchemy(app)
 
@@ -138,13 +139,4 @@ def logout_view():
     return redirect(url_for('index'))
 
 if __name__ == '__main__':
-    # Initialize flask-login
-    init_login()
-
-    # Create admin
-    admin = admin.Admin(app, 'Auth', index_view=MyAdminIndexView())
-
-    # Add view
-    admin.add_view(MyModelView(User, db.session))
-
     app.run(debug = True)

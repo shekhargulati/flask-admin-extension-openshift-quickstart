@@ -147,9 +147,4 @@ if __name__ == '__main__':
     # Add view
     admin.add_view(MyModelView(User, db.session))
 
-    # Create DB
-    db.create_all()
-
-    # Start app
-    app.debug = True
-    app.run()
+    app.run(debug = True)

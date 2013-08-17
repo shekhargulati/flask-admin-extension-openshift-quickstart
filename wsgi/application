@@ -14,3 +14,5 @@ except IOError:
 # 
 
 from auth import app as application
+from auth import *
+db.create_all()

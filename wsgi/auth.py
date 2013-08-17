@@ -10,6 +10,8 @@ from flask.ext.admin.contrib import sqlamodel
 # Create Flask application
 app = Flask(__name__)
 
+app.config['PROPAGATE_EXCEPTIONS'] = True
+
 # Create dummy secrey key so we can use sessions
 app.config['SECRET_KEY'] = '123456790'
 

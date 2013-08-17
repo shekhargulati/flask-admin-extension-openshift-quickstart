@@ -16,7 +16,7 @@ app.config['PROPAGATE_EXCEPTIONS'] = True
 app.config['SECRET_KEY'] = '123456790'
 
 # Create in-memory database
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite://'+ os.environ['OPENSHIFT_DATA_DIR'] +'test.sqlite'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///var/lib/openshift/520f47385004462ef3000050/app-root/data/test.sqlite'
 app.config['SQLALCHEMY_ECHO'] = True
 db = SQLAlchemy(app)
 

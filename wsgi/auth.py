@@ -8,13 +8,13 @@ from wtforms import TextField ,PasswordField, validators
 from flask.ext.admin.contrib import sqlamodel
 
 
-DEBUG = True
-SECRET_KEY = 'development key'
-
 # Create Flask application
 app = Flask(__name__)
 
 app.config['PROPAGATE_EXCEPTIONS'] = True
+
+# Create dummy secrey key so we can use sessions
+app.config['SECRET_KEY'] = '123456790'
 
 # Create in-memory database
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite://'+os.environ['OPENSHIFT_DATA_DIR'] + 'test.sqlite'
